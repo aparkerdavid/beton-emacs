@@ -1,4 +1,5 @@
-(global-set-key [escape] 'keyboard-escape-quit)
+(define-key ivy-minibuffer-map (kbd "<escape>") 'minibuffer-keyboard-quit)
+(define-key minibuffer-mode-map (kbd "<escape>") 'minibuffer-keyboard-quit)
 (define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
 (global-set-key (kbd "s-<return>") 'smart-open-line)            ;; Cmd+Return new line below
