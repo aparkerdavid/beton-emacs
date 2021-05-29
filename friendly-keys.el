@@ -13,8 +13,8 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-find-file)
 (global-unset-key (kbd "s-p"))     ; Don't print
 
-(define-key git-commit-mode-map (kbd "s-s") 'with-editor-finish)      ;; command-s to save commit
-(define-key git-commit-mode-map (kbd "<escape>") 'with-editor-cancel) ;; escape to cancel commit
+(define-key git-commit-mode-map (kbd "s-s") 'with-editor-finish)      ;; confirm commit
+(define-key git-commit-mode-map (kbd "<escape>") 'with-editor-cancel) ;; cancel commit
 
 ;; Quickly insert new lines above or below the current line, with correct indentation.
 (defun smart-open-line ()
