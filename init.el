@@ -139,13 +139,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("bef1d99b45a9ccfdae406944879191a35056d2bb908d44834618397a198781c5" default)))
+   '("bec2e1a0c80281d03bd8f070f6efc6bd18f934e745d0933b0ed60b2c62b3b6c0" "62f712b1e0cf7961938c03073f3e91107a9643b84660919f29cbe9c4a89afb18" "df415ad536469c14919890ffa86f9b2161a78a94a0c144cfdad8b42f878d04cf" "bef1d99b45a9ccfdae406944879191a35056d2bb908d44834618397a198781c5" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
