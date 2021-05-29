@@ -6,8 +6,10 @@
 (delete-selection-mode 1)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (setq-default line-spacing 0.25)
+
+;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (load-file "~/chemacs/default/beton-theme.el")
 (load-theme 'beton 'y)
 
