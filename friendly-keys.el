@@ -9,4 +9,5 @@
 (global-set-key (kbd "s-<down>") 'end-of-buffer)      ;; Last line
 
 (global-set-key (kbd "s-,") (lambda () (interactive) (find-file "~/chemacs/default/init.el")))
+(define-key projectile-mode-map (kbd "s-p") 'projectile-find-file)
 (global-unset-key (kbd "s-p"))     ; Don't print
