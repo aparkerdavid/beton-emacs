@@ -17,19 +17,6 @@
 (use-package ligature
   :straight (ligature :type git :host github :repo "mickeynp/ligature.el"))
 
-;; Enable the www ligature in every possible major mode
-(ligature-set-ligatures 't '("www"))
-
-;; Enable ligatures in programming modes
-(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
-                                     ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
-                                     "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
-                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
-                                     "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
-                                     "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
-                                     "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
-                                     "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
-                                     "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
-                                     "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
-
+;; inequality ligatures in programming modes
+(ligature-set-ligatures 'prog-mode '(">=" "<="))
 (global-ligature-mode 't)
