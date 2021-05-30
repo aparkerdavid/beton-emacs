@@ -116,5 +116,10 @@
 (global-set-key (kbd "s-z")   'undo-fu-only-undo)
 (global-set-key (kbd "s-Z") 'undo-fu-only-redo)
 
+(use-package rainbow-mode) ;; visualize hex colors
+
+(use-package rainbow-delimiters ;; rainbow brackets
+  :hook (prog-mode . rainbow-delimiters-mode)) 
+
 (load-file "~/chemacs/default/friendly-keys.el")
 (load-file "~/chemacs/default/appearance.el")
