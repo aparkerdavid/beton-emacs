@@ -7,18 +7,18 @@
 
 ;; Use minimalist Ivy for most things.
 (use-package ivy
-  :diminish                             ;; don't show Ivy in minor mode list
+  :diminish
   :config
-  (ivy-mode 1)                          ;; enable Ivy everywhere
+  (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)      ;; show bookmarks and recent files in buffer list
   (setq ivy-count-format "(%d/%d) ")
   (setq enable-recursive-minibuffers t)
 
   (setq ivy-re-builders-alist
       '((swiper . ivy--regex-plus)
-        (t      . ivy--regex-fuzzy)))   ;; enable fuzzy searching everywhere except for Swiper
+        (t      . ivy--regex-fuzzy)))
 
-  (global-set-key (kbd "s-b") 'ivy-switch-buffer)  ;; Cmd+b show buffers and recent files
+  (global-set-key (kbd "s-b") 'ivy-switch-buffer)
   (global-set-key (kbd "M-s-b") 'ivy-resume))      ;; Alt+Cmd+b resume whatever Ivy was doing
 
 
