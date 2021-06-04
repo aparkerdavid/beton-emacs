@@ -2,6 +2,8 @@
 (setq warning-minimum-level :emergency)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
+(setq split-width-threshold 0)
+(setq split-height-threshold nil)
 
 (load-file "~/chemacs/default/package-management.el")
 
@@ -109,7 +111,10 @@
      (delete-other-windows))))
 
 (use-package forge
-  :after magit)                                           	      
+  :after magit)
+
+(use-package orgit
+  :after magit)
 
 (use-package exec-path-from-shell
   :config
