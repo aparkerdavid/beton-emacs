@@ -3,6 +3,8 @@
 (define-key minibuffer-mode-map (kbd "<escape>") 'minibuffer-keyboard-quit)
 (define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
+(global-set-key (kbd "s-w") 'delete-window)
+
 (global-set-key (kbd "s-<return>") 'smart-open-line)            ;; Cmd+Return new line below
 (global-set-key (kbd "s-S-<return>") 'smart-open-line-above)    ;; Cmd+Shift+Return new line above
 
