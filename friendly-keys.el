@@ -4,6 +4,8 @@
 (define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
 (global-set-key (kbd "s-w") 'delete-window)
+(global-set-key (kbd "s-W") 'delete-other-windows)
+
 (global-set-key (kbd "s-!") 'eshell)
 
 (global-set-key (kbd "s-<return>") 'smart-open-line)            ;; Cmd+Return new line below
