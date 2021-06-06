@@ -73,6 +73,11 @@
   (which-key-mode)
   (setq which-key-idle-delay 0.5))
 
+(use-package move-text
+  :config
+  (global-set-key (kbd "M-<up>") 'move-text-up)
+  (global-set-key (kbd "M-<down>") 'move-text-down))
+
 ;; Show parens and other pairs.
 (use-package smartparens
   :diminish
