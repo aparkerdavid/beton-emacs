@@ -143,3 +143,4 @@
 
 (load-file "~/chemacs/default/friendly-keys.el")
 (load-file "~/chemacs/default/appearance.el")
+(load-file "~/chemacs/default/eshell.el")
