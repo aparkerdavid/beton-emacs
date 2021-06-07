@@ -23,6 +23,11 @@
   (global-set-key (kbd "s-b") 'ivy-switch-buffer)
   (global-set-key (kbd "M-s-b") 'ivy-resume))      ;; Alt+Cmd+b resume whatever Ivy was doing
 
+(use-package multiple-cursors
+  :config
+  (global-unset-key (kbd "M-<down-mouse-1>"))
+  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click))
+
 
 ;; Swiper is a better local finder.
 (use-package swiper
