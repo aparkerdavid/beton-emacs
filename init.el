@@ -137,7 +137,9 @@
 (use-package rainbow-mode) ;; visualize hex colors
 
 (use-package rainbow-delimiters ;; rainbow brackets
-  :hook (prog-mode . rainbow-delimiters-mode)) 
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :custom
+  (setq rainbow-delimiters-max-face-count 4))
 
 (load-file "~/chemacs/default/friendly-keys.el")
 (load-file "~/chemacs/default/appearance.el")
