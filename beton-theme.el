@@ -74,6 +74,7 @@
 	`(fringe ((,class (:background ,bg1 :foreground ,fg4))))
 	`(cursor ((,class (:background ,blue :invert-video t))))
         `(show-paren-match-face ((,class (:background ,warning))))
+	`(sp-show-pair-match-face ((,class (:background ,bg4))))
         `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
         `(mode-line ((,class (:box (:line-width 1 :color nil) :bold t :foreground ,fg4 :background ,bg2))))
         `(mode-line-inactive ((,class (:box (:line-width 1 :color nil :style pressed-button) :foreground ,var :background ,bg1 :weight normal))))
