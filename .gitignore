@@ -10,3 +10,5 @@ straight
 transient
 projects
 forge-database.sqlite
+/.lsp-session-v1
+/url/
