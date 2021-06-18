@@ -54,13 +54,13 @@
   (ivy-rich-mode 1)
   (setq ivy-rich-path-style 'abbrev)) ;; Abbreviate paths using abbreviate-file-name (e.g. replace “/home/username” with “~”)
 
-
 ;; Integrate Projectile with Counsel
 (use-package counsel-projectile
   :config
   (counsel-projectile-mode 1)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "s-p") 'counsel-projectile-find-file)         ;; Cmd+p open file in current project
+  (global-set-key (kbd "s-p") 'counsel-find-file)
+            ;; Cmd+p open file in current project
   (global-set-key (kbd "s-F") 'counsel-projectile-rg))     ;; Cmd+Shift+F search in current git repository
 
 (setq projectile-completion-system 'ivy)             ;; Use Ivy in Projectile
@@ -86,6 +86,7 @@
 ;; Show parens and other pairs.
 (use-package smartparens
   :diminish
+  :hook
   :config
   (require 'smartparens-config)
   (setq sp-highlight-pair-overlay nil)
@@ -130,9 +131,10 @@
   :config
   (exec-path-from-shell-initialize))
 
-(use-package undo-fu)
-(global-set-key (kbd "s-z")   'undo-fu-only-undo)
-(global-set-key (kbd "s-Z") 'undo-fu-only-redo)
+(use-package undo-fu
+  :config
+  (global-set-key (kbd "s-z")   'undo-fu-only-undo)
+  (global-set-key (kbd "s-Z") 'undo-fu-only-redo))
 
 (use-package rainbow-mode) ;; visualize hex colors
 
@@ -141,6 +143,35 @@
   :custom
   (setq rainbow-delimiters-max-face-count 4))
 
+(use-package company
+  :hook (prog-mode . company-mode))
+
+(use-package lsp-mode
+  :commands lsp
+  :bind
+  (:map prog-mode-map ("s-i" . lsp-find-definition))
+  :hook
+  (elixir-mode . lsp)
+  :init
+  (add-to-list 'exec-path "~/elixir-ls")
+  :config
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\node-modules\\'"))
+
+(use-package elixir-mode)
+
+(use-package mix
+  :config
+  (add-hook 'elixir-mode-hook 'mix-minor-mode))
+
+(use-package elfeed
+  :config
+  (setq elfeed-feeds
+	'(("https://freddiedeboer.substack.com/feed/" freddie)
+	  ("http://graymirror.substack.com/feed" curtis)
+	  ("https://lukesmith.xyz/rss.xml" luke))))
+  
+   
+
+(load-file "~/chemacs/default/eshell.el")
 (load-file "~/chemacs/default/friendly-keys.el")
 (load-file "~/chemacs/default/appearance.el")
-(load-file "~/chemacs/default/eshell.el")
