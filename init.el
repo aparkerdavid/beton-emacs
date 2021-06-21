@@ -7,6 +7,9 @@
 
 (load-file "~/chemacs/default/package-management.el")
 
+(use-package simpleclip
+  :config (simpleclip-mode 1))
+
 ;; Use minimalist Ivy for most things.
 (use-package ivy
   :diminish
