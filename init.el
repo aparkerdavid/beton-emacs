@@ -10,11 +10,6 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
-(use-package parinfer-rust-mode
-  :hook 'emacs-lisp-mode 'lisp-mode
-  :config
-  (setq-default parinfer-rust-dim-parens nil))
-
 (use-package god-mode)
 
 ;; Show keybindings cheatsheet
