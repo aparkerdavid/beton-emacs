@@ -30,7 +30,6 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
-
 ;; Emmet
 (use-package emmet-mode
   :commands emmet-mode
@@ -100,16 +99,7 @@
 
 (use-package mix
   :config
-  (add-hook 'elixir-mode-hook 'mix-minor-mode))
-
-(use-package elfeed
-  :config
-  (setq elfeed-feeds
-	'(("https://freddiedeboer.substack.com/feed/" freddie)
-	  ("http://graymirror.substack.com/feed" curtis)
-	  ("https://lukesmith.xyz/rss.xml" luke))))
-  
-   
+  (add-hook 'elixir-mode-hook 'mix-minor-mode))   
 
 (load-file "~/chemacs/default/eshell.el")
 (load-file "~/chemacs/default/friendly-keys.el")
