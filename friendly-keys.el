@@ -1,5 +1,4 @@
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-(define-key ivy-minibuffer-map (kbd "<escape>") 'minibuffer-keyboard-quit)
 (define-key minibuffer-mode-map (kbd "<escape>") 'minibuffer-keyboard-quit)
 (define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
@@ -15,7 +14,6 @@
 (global-set-key (kbd "s-<down>") 'end-of-buffer)      ;; Last line
 
 (global-set-key (kbd "s-,") (lambda () (interactive) (find-file "~/chemacs/default/init.el")))
-(define-key projectile-mode-map (kbd "s-p") 'projectile-find-file)
 (global-unset-key (kbd "s-p"))     ; Don't print
 
 (define-key git-commit-mode-map (kbd "s-s") 'with-editor-finish)      ;; confirm commit

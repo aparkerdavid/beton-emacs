@@ -10,64 +10,6 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
-;; Use minimalist Ivy for most things.
-(use-package ivy
-  :diminish
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)      ;; show bookmarks and recent files in buffer list
-  (setq ivy-count-format "(%d/%d) ")
-  (setq enable-recursive-minibuffers t)
-
-  (setq ivy-re-builders-alist
-      '((swiper . ivy--regex-plus)
-        (t      . ivy--regex-fuzzy)))
-
-  (global-set-key (kbd "s-b") 'ivy-switch-buffer)
-  (global-set-key (kbd "M-s-b") 'ivy-resume))      ;; Alt+Cmd+b resume whatever Ivy was doing
-
-(use-package multiple-cursors
-  :config
-  (global-unset-key (kbd "M-<down-mouse-1>"))
-  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click))
-
-
-;; Swiper is a better local finder.
-(use-package swiper
-  :config
-  (global-set-key "\C-s" 'swiper)       ;; Default Emacs Isearch forward...
-  (global-set-key "\C-r" 'swiper)       ;; ... and Isearch backward replaced with Swiper
-  (global-set-key (kbd "s-f") 'swiper)) ;; Cmd+f find text
-
-
-;; Better menus with Counsel (a layer on top of Ivy)
-(use-package counsel
-  :config
-  (global-set-key (kbd "M-x") 'counsel-M-x)            ;; Alt+x run command
-  (global-set-key (kbd "s-P") 'counsel-M-x)            ;; Cmd+Shift+p run command
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)  ;; Replace built-in Emacs 'find file' (open file) with Counsel
-  (global-set-key (kbd "s-o") 'counsel-find-file))     ;; Cmd+o open file
-
-(use-package smex)  ;; show recent commands when invoking M-x
-(use-package flx)   ;; enable fuzzy matching
-
-;; Make Ivy a bit more friendly by adding information to ivy buffers, e.g. description of commands in Alt-x, meta info when switching buffers, etc.
-(use-package ivy-rich
-  :config
-  (ivy-rich-mode 1)
-  (setq ivy-rich-path-style 'abbrev)) ;; Abbreviate paths using abbreviate-file-name (e.g. replace “/home/username” with “~”)
-
-;; Integrate Projectile with Counsel
-(use-package counsel-projectile
-  :config
-  (counsel-projectile-mode 1)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "s-p") 'counsel-find-file)
-            ;; Cmd+p open file in current project
-  (global-set-key (kbd "s-F") 'counsel-projectile-rg))     ;; Cmd+Shift+F search in current git repository
-
-(setq projectile-completion-system 'ivy)             ;; Use Ivy in Projectile
-
 (use-package parinfer-rust-mode
   :hook 'emacs-lisp-mode 'lisp-mode
   :config
@@ -89,7 +31,6 @@
 ;; Show parens and other pairs.
 (use-package smartparens
   :diminish
-  :hook
   :config
   (require 'smartparens-config)
   (setq sp-highlight-pair-overlay nil)
@@ -123,6 +64,8 @@
     (progn
      (magit-status)
      (delete-other-windows))))
+
+(use-package projectile)
 
 (use-package forge
   :after magit)
