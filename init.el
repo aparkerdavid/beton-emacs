@@ -10,8 +10,6 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
-(use-package god-mode)
-
 ;; Show keybindings cheatsheet
 (use-package which-key
   :config
