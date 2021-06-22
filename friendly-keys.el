@@ -16,6 +16,9 @@
 (global-set-key (kbd "s-,") (lambda () (interactive) (find-file "~/chemacs/default/init.el")))
 (global-unset-key (kbd "s-p"))     ; Don't print
 
+(global-set-key (kbd "s-P") 'execute-extended-command)
+(global-set-key (kbd "s-b") 'switch-to-buffer)
+
 (define-key git-commit-mode-map (kbd "s-s") 'with-editor-finish)      ;; confirm commit
 (define-key git-commit-mode-map (kbd "<escape>") 'with-editor-cancel) ;; cancel commit
 

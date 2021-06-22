@@ -10,6 +10,21 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
+(use-package consult)
+
+(use-package ctrlf)
+
+(use-package marginalia
+  :config (marginalia-mode +1))
+
+(use-package selectrum
+  :config (selectrum-mode +1))
+
+(use-package selectrum-prescient
+  :config
+  (selectrum-prescient-mode +1)
+  (setq prescient-filter-method '(literal regexp initialism fuzzy)))
+
 ;; Show keybindings cheatsheet
 (use-package which-key
   :config
@@ -57,7 +72,12 @@
      (magit-status)
      (delete-other-windows))))
 
-(use-package projectile)
+(use-package ripgrep)
+
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 
 (use-package forge
   :after magit)
