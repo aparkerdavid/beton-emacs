@@ -10,9 +10,17 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
-(use-package consult)
+(use-package consult
+  :config
+  (setq consult-project-root-function #'projectile-project-root))
 
-(use-package ctrlf)
+(use-package embark)
+
+(use-package embark-consult
+  :bind ("s-;" . 'embark-act))
+
+(use-package ctrlf
+  :config (ctrlf-mode))
 
 (use-package marginalia
   :config (marginalia-mode +1))
@@ -85,6 +93,9 @@
 (use-package orgit
   :after magit)
 
+(use-package ediff
+  )
+
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
@@ -100,6 +111,10 @@
   :hook (prog-mode . rainbow-delimiters-mode)
   :custom
   (setq rainbow-delimiters-max-face-count 4))
+
+(use-package highlight-function-calls
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'highlight-function-calls-mode))
 
 (use-package company
   :hook (prog-mode . company-mode))
