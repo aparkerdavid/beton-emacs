@@ -10,6 +10,12 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
+(use-package apheleia
+  :config
+  (apheleia-global-mode +1)
+  (push '(mix-format "mix format" file) apheleia-formatters)
+  (push '(elixir-mode . mix-format) apheleia-mode-alist))
+
 (use-package consult
   :config
   (setq consult-project-root-function #'projectile-project-root))
@@ -71,6 +77,11 @@
     (face-remap-add-relative 'variable-pitch :family "Linux Biolinum"
                              :height 1.0)))
 
+(use-package org
+  :config
+  (setq org-default-notes-file "~/capture.org")
+  (define-key org-capture-mode-map (kbd "s-s") 'org-capture-finalize))
+
 (use-package magit
   :config
   (global-set-key (kbd "s-g") 'magit-status)
@@ -93,8 +104,7 @@
 (use-package orgit
   :after magit)
 
-(use-package ediff
-  )
+(use-package ediff)
 
 (use-package exec-path-from-shell
   :config
@@ -137,5 +147,6 @@
   (add-hook 'elixir-mode-hook 'mix-minor-mode))   
 
 (load-file "~/chemacs/default/eshell.el")
+(load-file "~/chemacs/default/shell.el")
 (load-file "~/chemacs/default/friendly-keys.el")
 (load-file "~/chemacs/default/appearance.el")

@@ -53,6 +53,7 @@
        (var     "#232c31")
        (warning "#ff0000")
        (warning2 "#ff8800"))
+   (setq ansi-color-names-vector `[,bg1 ,dark-red ,dark-green ,dark-yellow ,dark-blue ,dark-purple ,dark-teal ,fg1])
    (custom-theme-set-faces
    'beton
         `(default ((,class (:background ,bg1 :foreground ,fg1))))
