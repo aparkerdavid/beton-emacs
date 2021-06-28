@@ -17,6 +17,7 @@
   (push '(elixir-mode . mix-format) apheleia-mode-alist))
 
 (use-package consult
+  :bind ("s-F" . 'consult-ripgrep)
   :config
   (setq consult-project-root-function #'projectile-project-root))
 
@@ -110,6 +111,8 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package iedit)
+
 (use-package undo-fu
   :config
   (global-set-key (kbd "s-z")   'undo-fu-only-undo)
@@ -139,6 +142,17 @@
   (add-to-list 'exec-path "~/elixir-ls")
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\node-modules\\'"))
+
+(use-package emmet-mode)
+
+(use-package web-mode
+  :hook
+  (web-mode . emmet-mode)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html.leex\\'" . web-mode))  
+  (setq-default web-mode-markup-indent-offset 2))
+
 
 (use-package elixir-mode)
 
