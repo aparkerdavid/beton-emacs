@@ -149,8 +149,9 @@
   :hook
   (web-mode . emmet-mode)
   :config
-  (add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html.leex\\'" . web-mode))  
+  (add-to-list 'auto-mode-alist '("\\.html\\.eex\\'" . web-mode))
+  (add-to-list 'web-mode-engines-alist
+      '("elixir" . "\\.html\\.eex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
 
 
