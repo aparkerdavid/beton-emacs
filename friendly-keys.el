@@ -3,8 +3,9 @@
 
 (global-set-key (kbd "s-w") 'delete-window)
 (global-set-key (kbd "s-W") 'delete-other-windows)
+(global-set-key (kbd "s-\\") 'split-window-right)
 
-(global-set-key (kbd "s-!") 'shell)
+(global-set-key (kbd "s-!") 'eshell)
 (global-set-key (kbd "s-o") 'find-file)
 
 (global-set-key (kbd "s-K") 'kill-whole-line-dwim)
