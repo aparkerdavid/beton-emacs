@@ -56,6 +56,12 @@
 ;; Show parens and other pairs.
 (use-package smartparens
   :diminish
+  :bind
+  (:map emacs-lisp-mode-map
+	("C-S-<left>" . sp-forward-barf-sexp)
+("C-S-<right>" . sp-forward-slurp-sexp)
+("C-S-<up>" . sp-mark-sexp)
+	)
   :config
   (require 'smartparens-config)
   (setq sp-highlight-pair-overlay nil)
