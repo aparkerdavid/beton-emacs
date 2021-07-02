@@ -1,4 +1,4 @@
-(setq inhibit-startup-screen t)
+(setq initial-buffer-choice "~/gaslight/notes.org")
 (setq warning-minimum-level :emergency)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
@@ -79,9 +79,12 @@
                              :height 1.0)))
 
 (use-package org
-  :config
-  (setq org-default-notes-file "~/capture.org")
-  (define-key org-capture-mode-map (kbd "s-s") 'org-capture-finalize))
+  :bind
+  (:map org-mode-map
+        ("c-<left>" . org-metaleft)
+	("c-<right>" . org-metaright)
+	("m-<left>" . left-word)
+	("m-<right>" . right-word)))
 
 (use-package magit
   :config
@@ -141,7 +144,9 @@
   :init
   (add-to-list 'exec-path "~/elixir-ls")
   :config
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\node-modules\\'"))
+  (setq lsp-enable-file-watchers nil))
+
+(use-package consult-lsp)
 
 (use-package emmet-mode)
 
@@ -150,10 +155,12 @@
   (web-mode . emmet-mode)
   :config
   (add-to-list 'auto-mode-alist '("\\.html\\.eex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html\\.leex\\'" . web-mode))
   (add-to-list 'web-mode-engines-alist
       '("elixir" . "\\.html\\.eex\\'"))
+  (add-to-list 'web-mode-engines-alist
+      '("elixir" . "\\.html\\.leex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
-
 
 (use-package elixir-mode)
 

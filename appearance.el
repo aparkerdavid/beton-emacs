@@ -1,4 +1,5 @@
 (set-face-attribute 'default nil :font "Fira Code" :height 130)
+(setq cursor-type 'bar)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -13,6 +14,15 @@
 
 (load-file "~/chemacs/default/beton-theme.el")
 (load-theme 'beton 'y)
+
+(use-package mini-frame
+  :config
+  (mini-frame-mode +1)
+  (custom-set-variables
+   '(mini-frame-show-parameters
+     '((top . 10)
+       (width . 0.7)
+       (left . 0.5)))))
 
 (use-package tree-sitter)
 
