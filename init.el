@@ -2,6 +2,8 @@
 (setq warning-minimum-level :emergency)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
+(setq auto-save-file-name-transforms
+  `((".*" "~/.saves/auto/" t)))
 (setq split-width-threshold 0)
 (setq split-height-threshold nil)
 
