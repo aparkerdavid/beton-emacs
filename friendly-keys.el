@@ -26,21 +26,21 @@
 
 ;; cancel commit
 
-(defun kill-lines (from-line to-line)
-  (if (< from-line to-line)
-      (number-sequence from-line to-line)
-    (number-sequence to-line from-line)))
+(defun kill-whole-lines (from-line to-line)
+  (goto-line from-line)
+  (let ((number-of-lines-to-kill (+ 1 (abs (- from-line to-line)))))
+    (dotimes (_ number-of-lines-to-kill) (call-interactively 'kill-whole-line))))
 
 (defun kill-whole-line-dwim ()
   (interactive)
   (if (use-region-p)
-      (let ((current-line (line-number-at-pos)))
+      (let ((point-line (line-number-at-pos)))
 	(save-excursion
 	  (call-interactively 'exchange-point-and-mark)
-	  (let* ((mark-line (line-number-at-pos)))
-	    (goto-line (min mark-line current-line))
-	    (message (format "%s" (min mark-line current-line)))
-	    (dotimes (+ 1 (abs (- mark-line current-line)) (call-interactively 'kill-whole-line))))))
+	  (let* ((mark-line (line-number-at-pos))
+		 (from-line (min mark-line point-line))
+		 (to-line (max mark-line point-line)))
+	    (kill-whole-lines from-line to-line))))
     (call-interactively 'kill-whole-line)))
 
 ;; Quickly insert new lines above or below the current line, with correct indentation.
@@ -65,9 +65,3 @@
     (call-interactively 'eval-last-sexp)))
      
 (define-key emacs-lisp-mode-map (kbd "s-e") 'elisp-smart-eval)
-
-
-
-
-
-
