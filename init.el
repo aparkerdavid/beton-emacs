@@ -3,7 +3,9 @@
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq auto-save-file-name-transforms
-  `((".*" "~/.saves/auto/" t)))
+      `((".*" "~/.saves/auto/" t)))
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
 (setq split-width-threshold 0)
 (setq split-height-threshold nil)
 
@@ -162,12 +164,12 @@
   :hook
   (web-mode . emmet-mode)
   :config
-  (add-to-list 'auto-mode-alist '("\\.html\\.eex\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html\\.leex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html.leex\\'" . web-mode))
   (add-to-list 'web-mode-engines-alist
-      '("elixir" . "\\.html\\.eex\\'"))
+      '("elixir" . "\\.html.eex\\'"))
   (add-to-list 'web-mode-engines-alist
-      '("elixir" . "\\.html\\.leex\\'"))
+      '("elixir" . "\\.html.leex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
 
 (use-package elixir-mode)
