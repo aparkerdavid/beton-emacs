@@ -14,6 +14,10 @@
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
+(use-package dired+
+  :config
+  (diredp-toggle-find-file-reuse-dir 1))
+
 (use-package apheleia
   :config
   (apheleia-global-mode +1)
