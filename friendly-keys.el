@@ -5,6 +5,9 @@
 (global-set-key (kbd "s-W") 'delete-other-windows)
 (global-set-key (kbd "s-\\") 'split-window-right)
 
+(global-set-key (kbd "s-<left>") 'back-to-indentation)
+(global-set-key (kbd "s-/") 'comment-line)
+
 (global-set-key (kbd "s-!") 'eshell)
 (global-set-key (kbd "s-o") 'find-file)
 
@@ -65,3 +68,4 @@
     (call-interactively 'eval-last-sexp)))
      
 (define-key emacs-lisp-mode-map (kbd "s-e") 'elisp-smart-eval)
+(define-key lisp-interaction-mode-map (kbd "s-e") 'elisp-smart-eval)
