@@ -185,8 +185,13 @@
 (use-package elixir-mode)
 
 (use-package mix
+  :straight
+  (mix :type git :host github :repo "aparkerdavid/mix.el")
+  :bind
+  (:map elixir-mode-map
+	("s-r" . mix-test-choose-file))
   :config
-  (add-hook 'elixir-mode-hook 'mix-minor-mode))   
+  (add-hook 'elixir-mode-hook 'mix-minor-mode))
 
 (load-file "~/chemacs/default/eshell.el")
 (load-file "~/chemacs/default/shell.el")
