@@ -17,7 +17,7 @@
 (use-package apheleia
   :config
   (apheleia-global-mode +1)
-  (push '(mix-format "mix format" file) apheleia-formatters)
+  (push '(mix-format "mix" "format" "-") apheleia-formatters)
   (push '(elixir-mode . mix-format) apheleia-mode-alist))
 
 (use-package consult
