@@ -1,5 +1,5 @@
 (set-face-attribute 'default nil :font "Fira Code" :height 130)
-(setq cursor-type 'bar)
+(setq-default cursor-type '(bar . 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
