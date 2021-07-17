@@ -1,3 +1,3 @@
 ![](https://i.postimg.cc/430mhvcG/unnamed.jpg)
 
-emacs setup. mac-friendly keys. beton-brut vibe.  mostly for magit
+Emacs setup with mac-friendly keys and a beton-brut vibe
