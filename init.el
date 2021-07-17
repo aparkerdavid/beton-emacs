@@ -65,8 +65,8 @@
   :bind
   (:map emacs-lisp-mode-map
 	("C-S-<left>" . sp-forward-barf-sexp)
-("C-S-<right>" . sp-forward-slurp-sexp)
-("C-S-<up>" . sp-mark-sexp)
+	("C-S-<right>" . sp-forward-slurp-sexp)
+	("C-S-<up>" . sp-mark-sexp)
 	)
   :config
   (require 'smartparens-config)
@@ -106,8 +106,8 @@
   (defun magit-standalone ()
     (interactive)
     (progn
-     (magit-status)
-     (delete-other-windows))))
+      (magit-status)
+      (delete-other-windows))))
 
 (use-package ripgrep)
 
@@ -171,9 +171,9 @@
   (add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html.leex\\'" . web-mode))
   (add-to-list 'web-mode-engines-alist
-      '("elixir" . "\\.html.eex\\'"))
+	       '("elixir" . "\\.html.eex\\'"))
   (add-to-list 'web-mode-engines-alist
-      '("elixir" . "\\.html.leex\\'"))
+	       '("elixir" . "\\.html.leex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
 
 (use-package elixir-mode)
