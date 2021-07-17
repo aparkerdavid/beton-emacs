@@ -93,12 +93,18 @@
                              :height 1.0)))
 
 (use-package org
+  :config
+  (setq org-support-shift-select 't)
   :bind
   (:map org-mode-map
-        ("c-<left>" . org-metaleft)
-	("c-<right>" . org-metaright)
-	("m-<left>" . left-word)
-	("m-<right>" . right-word)))
+        ("M-S-<left>" . org-shiftcontrolleft)
+        ("M-S-<right>" . org-shiftcontrolright)
+        ("C-<left>" . org-metaleft)
+	("C-<right>" . org-metaright)
+	("M-<left>" . left-word)
+	("M-<right>" . right-word)
+	("M-<down>" . move-text-down)
+	("M-<up>" . move-text-up)))
 
 (use-package magit
   :config
