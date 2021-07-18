@@ -1,3 +1,5 @@
+(global-set-key (kbd "<escape>") 'keyboard-quit)
+(define-key company-active-map (kbd "<escape>") 'company-abort)
 (define-key minibuffer-mode-map (kbd "<escape>") 'minibuffer-keyboard-quit)
 (define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
