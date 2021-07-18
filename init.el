@@ -151,6 +151,7 @@
   (add-hook 'emacs-lisp-mode-hook 'highlight-function-calls-mode))
 
 (use-package company
+  :bind (:map company-active-map ("<escape>" . company-abort))
   :hook (prog-mode . company-mode))
 
 (use-package lsp-mode
