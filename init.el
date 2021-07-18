@@ -8,6 +8,7 @@
 (setq create-lockfiles nil)
 (setq split-width-threshold 0)
 (setq split-height-threshold nil)
+(add-hook 'prog-mode-hook #'electric-pair-mode)
 
 (load-file "~/chemacs/default/package-management.el")
 
@@ -66,13 +67,10 @@
   (:map emacs-lisp-mode-map
 	("C-S-<left>" . sp-forward-barf-sexp)
 	("C-S-<right>" . sp-forward-slurp-sexp)
-	("C-S-<up>" . sp-mark-sexp)
-	)
+	("C-S-<up>" . sp-mark-sexp))
   :config
   (require 'smartparens-config)
-  (setq sp-highlight-pair-overlay nil)
-  (smartparens-global-mode t)
-  (show-smartparens-global-mode t))
+  (setq sp-highlight-pair-overlay nil))
 
 ;; Emmet
 (use-package emmet-mode
