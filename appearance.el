@@ -1,4 +1,5 @@
 (set-face-attribute 'default nil :font "Fira Code" :height 130)
+(setq rainbow-delimiters-max-face-count 4)
 (setq-default cursor-type '(bar . 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -8,6 +9,7 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (setq-default line-spacing 0.25)
 (fringe-mode 24)
+
 
 ;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)

@@ -142,9 +142,7 @@
 (use-package rainbow-mode) ;; visualize hex colors
 
 (use-package rainbow-delimiters ;; rainbow brackets
-  :hook (prog-mode . rainbow-delimiters-mode)
-  :custom
-  (setq rainbow-delimiters-max-face-count 4))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package highlight-function-calls
   :config
