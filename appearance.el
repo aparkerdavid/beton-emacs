@@ -37,7 +37,5 @@
 
 (use-package ligature
   :straight (ligature :type git :host github :repo "mickeynp/ligature.el"))
-
-;; inequality ligatures in programming modes
-(ligature-set-ligatures 'prog-mode '(">=" "<="))
+(ligature-set-ligatures 'prog-mode '(">=" "<=" "|>" "->" "<-" "=>"))
 (global-ligature-mode 't)
