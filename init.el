@@ -189,14 +189,34 @@
 	       '("elixir" . "\\.html.leex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
 
-(use-package elixir-mode)
+(defun mix-test-choose-file (&optional prefix use-umbrella-subprojects)
+  (interactive "P")
+  (let*
+      ((current-file-path (when buffer-file-name (expand-file-name buffer-file-name)))
+       (project-root (if use-umbrella-subprojects
+			 (mix--find-closest-mix-file-dir current-file-path)
+		       (mix--project-root)))
+       (test-dir (concat project-root "test/"))
+       (test-file-paths (directory-files-recursively test-dir "**test.exs"))
+       (default-file-path (if (member current-file-path test-file-paths) current-file-path ""))
+       (chosen-file (completing-read "Run test file: " test-file-paths nil nil default-file-path))
+       (test-command (concat mix-command-test " " chosen-file)))
+    (mix--start "test" test-command project-root prefix)))
 
-(use-package mix
-  :straight
-  (mix :type git :host github :repo "aparkerdavid/mix.el")
+(use-package elixir-mode
   :bind
   (:map elixir-mode-map
 	("s-r" . mix-test-choose-file))
+  :config
+  (defun shou/fix-apheleia-project-dir (orig-fn &rest args)
+    (let ((project (project-current)))
+      (if (not (null project))
+          (let ((default-directory (project-root project))) (apply orig-fn args))
+        (apply orig-fn args))))
+
+  (advice-add 'apheleia-format-buffer :around #'shou/fix-apheleia-project-dir))
+
+(use-package mix
   :config
   (add-hook 'elixir-mode-hook 'mix-minor-mode))
 
