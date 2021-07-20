@@ -1,4 +1,4 @@
-(set-face-attribute 'default nil :font "Fira Code" :height 130)
+(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 150)
 (setq rainbow-delimiters-max-face-count 4)
 (setq-default cursor-type '(bar . 3))
 (menu-bar-mode -1)
