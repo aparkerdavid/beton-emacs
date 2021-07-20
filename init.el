@@ -8,6 +8,8 @@
 (setq create-lockfiles nil)
 (setq split-width-threshold 0)
 (setq split-height-threshold nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (add-hook 'prog-mode-hook #'electric-pair-mode)
 
 (load-file "~/chemacs/default/package-management.el")
