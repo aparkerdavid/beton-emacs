@@ -10,7 +10,10 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq-default line-spacing 0.4)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'hl-line-mode)
 (fringe-mode 24)
+
 
 
 ;; non-jittery line number display, for when you want line numbers
