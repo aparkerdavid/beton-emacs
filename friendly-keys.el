@@ -5,6 +5,8 @@
 (global-set-key (kbd "s-w") 'delete-window)
 (global-set-key (kbd "s-W") 'delete-other-windows)
 (global-set-key (kbd "s-\\") 'split-window-right)
+(global-set-key (kbd "C-s-\\") 'split-window-below)
+(global-set-key (kbd "s-=") 'balance-windows)
 
 (global-set-key (kbd "s-<left>") 'back-to-indentation)
 (global-set-key (kbd "s-/") 'comment-line)
