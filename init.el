@@ -12,6 +12,12 @@
 
 (load-file "~/chemacs/default/package-management.el")
 
+(use-package diminish
+  :config
+  (diminish 'auto-revert-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'company-mode))
+
 (use-package simpleclip
   :config (simpleclip-mode 1))
 
@@ -20,6 +26,7 @@
   (diredp-toggle-find-file-reuse-dir 1))
 
 (use-package apheleia
+  :diminish apheleia-mode
   :config
   (apheleia-global-mode +1)
   (push '(mix-format "mix" "format" "-") apheleia-formatters)
@@ -51,6 +58,7 @@
 
 ;; Show keybindings cheatsheet
 (use-package which-key
+  :diminish which-key-mode
   :config
   (which-key-mode)
   (setq which-key-idle-delay 0.5))
