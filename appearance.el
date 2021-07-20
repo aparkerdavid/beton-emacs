@@ -1,4 +1,5 @@
 (set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 150)
+(setq frame-resize-pixelwise +1)
 (setq rainbow-delimiters-max-face-count 4)
 (setq-default cursor-type '(bar . 3))
 (menu-bar-mode -1)
@@ -7,7 +8,8 @@
 (blink-cursor-mode 0)
 (delete-selection-mode 1)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(setq-default line-spacing 0.25)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq-default line-spacing 0.4)
 (fringe-mode 24)
 
 
