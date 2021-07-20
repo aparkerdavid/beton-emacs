@@ -1,4 +1,4 @@
-(setq initial-buffer-choice "~/gaslight/notes.org")
+(setq initial-buffer-choice "~/notes.org")
 (setq warning-minimum-level :emergency)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
