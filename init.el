@@ -116,6 +116,7 @@
 
 (use-package magit
   :config
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status)
   (global-set-key (kbd "s-g") 'magit-status)
   (defun magit-standalone ()
     (interactive)
