@@ -1,7 +1,16 @@
 (defun beton-clear-shell () (interactive)
        (mark-whole-buffer)
-       (call-interactively 'delete-backward-char)
+       (call-interactively 'delete-region)
        (call-interactively 'comint-send-input))
+
+(defun my/shell-previous-input () (interactive)
+       (call-interactively 'end-of-buffer)
+       (call-interactively 'comint-previous-input))
+
+(defun my/shell-clear-input () (interactive)
+       (call-interactively 'set-mark-command)
+       (call-interactively 'beginning-of-line)
+       (call-interactively 'delete-region))
 
 (use-package shell
   :config
@@ -9,5 +18,7 @@
   :bind
   (:map shell-mode-map
 	("ESC" . comint-interrupt-subjob)
-	("M-<del>". backward-kill-word)
-	("s-u" . beton-clear-shell)))
+	("M-<backspace>". backward-kill-word)
+	("s-u" . beton-clear-shell)
+        ("<up>" . my/shell-previous-input)
+        ("s-<backspace>" . my/shell-clear-input)))

@@ -11,7 +11,7 @@
 (global-set-key (kbd "s-<left>") 'back-to-indentation)
 (global-set-key (kbd "s-/") 'comment-line)
 
-(global-set-key (kbd "s-!") 'eshell)
+(global-set-key (kbd "s-!") 'shell)
 (global-set-key (kbd "s-o") 'find-file)
 
 (global-set-key (kbd "s-K") 'kill-whole-line-dwim)

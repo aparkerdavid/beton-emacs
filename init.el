@@ -1,5 +1,6 @@
 (setq initial-buffer-choice "~/notes.org")
 (setq warning-minimum-level :emergency)
+(setq-default indent-tabs-mode nil)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq auto-save-file-name-transforms
@@ -14,11 +15,26 @@
 
 (load-file "~/chemacs/default/package-management.el")
 
+
 (use-package diminish
   :config
   (diminish 'auto-revert-mode)
   (diminish 'eldoc-mode)
-  (diminish 'company-mode))
+  (diminish 'company-mode)
+  (diminish 'mix-minor-mode)
+  (diminish 'winum-mode))
+
+
+(use-package winum
+  :config
+  (winum-mode +1)
+  :bind
+  ("s-1" . winum-select-window-1)
+  ("s-2" . winum-select-window-2)
+  ("s-3" . winum-select-window-3)
+  ("s-4" . winum-select-window-4)
+  ("s-5" . winum-select-window-5)
+  ("s-6" . winum-select-window-6))
 
 (use-package simpleclip
   :config (simpleclip-mode 1))
@@ -126,6 +142,8 @@
 
 (use-package ripgrep)
 
+(use-package wgrep)
+
 (use-package projectile
   :config
   (projectile-mode +1)
@@ -144,6 +162,10 @@
   (exec-path-from-shell-initialize))
 
 (use-package iedit)
+
+(use-package multiple-cursors
+  :bind
+  ("s-<mouse-1>" . mc/add-cursor-on-click))
 
 (use-package undo-fu
   :config
@@ -184,10 +206,13 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html.leex\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html.heex\\'" . web-mode))
   (add-to-list 'web-mode-engines-alist
 	       '("elixir" . "\\.html.eex\\'"))
   (add-to-list 'web-mode-engines-alist
 	       '("elixir" . "\\.html.leex\\'"))
+  (add-to-list 'web-mode-engines-alist
+	       '("elixir" . "\\.html.heex\\'"))
   (setq-default web-mode-markup-indent-offset 2))
 
 (defun mix-test-choose-file (&optional prefix use-umbrella-subprojects)
@@ -204,10 +229,10 @@
        (test-command (concat mix-command-test " " chosen-file)))
     (mix--start "test" test-command project-root prefix)))
 
+(global-set-key (kbd "s-r") 'mix-test-choose-file)
+
 (use-package elixir-mode
-  :bind
-  (:map elixir-mode-map
-	("s-r" . mix-test-choose-file))
+  
   :config
   (defun shou/fix-apheleia-project-dir (orig-fn &rest args)
     (let ((project (project-current)))
@@ -220,6 +245,28 @@
 (use-package mix
   :config
   (add-hook 'elixir-mode-hook 'mix-minor-mode))
+
+(use-package polymode
+  :mode ("\.ex$" . poly-elixir-web-mode)
+  :config
+  (define-hostmode poly-elixir-hostmode :mode 'elixir-mode)
+  (define-innermode poly-liveview-expr-elixir-innermode
+    :mode 'web-mode
+    :head-matcher (rx line-start (* space) "~H" (= 3 (char "\"'")) line-end)
+    :tail-matcher (rx line-start (* space) (= 3 (char "\"'")) line-end)
+    :head-mode 'host
+    :tail-mode 'host
+    :allow-nested nil
+    :keep-in-mode 'host
+    :fallback-mode 'host)
+  (define-polymode poly-elixir-web-mode
+    :hostmode 'poly-elixir-hostmode
+    :innermodes '(poly-liveview-expr-elixir-innermode))
+  )
+(setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
+
+(use-package clojure-mode)
+(use-package cider)
 
 (load-file "~/chemacs/default/eshell.el")
 (load-file "~/chemacs/default/shell.el")
