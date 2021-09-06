@@ -7,6 +7,10 @@
        (call-interactively 'end-of-buffer)
        (call-interactively 'comint-previous-input))
 
+(defun my/shell-next-input () (interactive)
+       (call-interactively 'end-of-buffer)
+       (call-interactively 'comint-next-input))
+
 (defun my/shell-clear-input () (interactive)
        (call-interactively 'set-mark-command)
        (call-interactively 'beginning-of-line)
@@ -21,4 +25,5 @@
 	("M-<backspace>". backward-kill-word)
 	("s-u" . beton-clear-shell)
         ("<up>" . my/shell-previous-input)
+        ("<down>" . my/shell-next-input)
         ("s-<backspace>" . my/shell-clear-input)))
