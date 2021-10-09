@@ -4,12 +4,16 @@
 (setq mc/cmds-to-run-for-all
       '(
         electric-newline-and-maybe-indent
+        emmet-expand-line
+        mouse-set-region
         org-self-insert-command
+        simpleclip-cut
         undo-fu-only-undo
         ))
 
 (setq mc/cmds-to-run-once
       '(
         keyboard-quit
+        shell
         simpleclip-paste
         ))
