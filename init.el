@@ -148,6 +148,7 @@
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 
+(setq auth-sources '("~/.authinfo"))
 (use-package forge
   :after magit)
 
