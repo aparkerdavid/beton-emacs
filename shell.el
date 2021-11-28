@@ -1,6 +1,8 @@
 
 (setenv "USING_EMACS" "t")
 
+(set-face-attribute 'ansi-color-white nil :foreground "#232c31" :background "#232c31")
+(set-face-attribute 'ansi-color-bright-white nil :foreground "#353d41" :background "#353d41")
 (set-face-attribute 'ansi-color-red nil :foreground "#aa3731" :background "#aa3731")
 (set-face-attribute 'ansi-color-bright-red nil :foreground "#7f2925" :background "#7f2925")
 (set-face-attribute 'ansi-color-green nil :foreground "#448c27" :background "#448c27")
