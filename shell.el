@@ -1,25 +1,18 @@
+
 (setenv "USING_EMACS" "t")
 
-(setq ansi-color-map 
-        [default bold default italic underline success warning error nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil
-          (foreground-color . #1="#232c31") ;; fg1
-          (foreground-color . #2="#aa3731") ;; red
-          (foreground-color . #3="#448c27") ;; green
-          (foreground-color . #4="#996d00") ;; dark-yellow
-          (foreground-color . #5="#284a9a") ;; dark-blue
-          (foreground-color . #6="#75358d") ;; dark-magenta
-          (foreground-color . #7="#006285") ;; dark-teal
-          (foreground-color . #8="#353d41") ;; fg2
-          nil nil
-          (background-color . #1#)
-          (background-color . #2#)
-          (background-color . #3#)
-          (background-color . #4#)
-          (background-color . #5#)
-          (background-color . #6#)
-          (background-color . #7#)
-          (background-color . #8#)
-          nil nil])
+(set-face-attribute 'ansi-color-red nil :foreground "#aa3731" :background "#aa3731")
+(set-face-attribute 'ansi-color-bright-red nil :foreground "#7f2925" :background "#7f2925")
+(set-face-attribute 'ansi-color-green nil :foreground "#448c27" :background "#448c27")
+(set-face-attribute 'ansi-color-bright-green nil :foreground "#32681d" :background "#32681d")
+(set-face-attribute 'ansi-color-blue nil :foreground "#325cc0" :background "#325cc0")
+(set-face-attribute 'ansi-color-bright-blue nil :foreground "#284a9a" :background "#284a9a")
+(set-face-attribute 'ansi-color-yellow nil :foreground "#cb9000" :background "#cb9000")
+(set-face-attribute 'ansi-color-bright-yellow nil :foreground "#996d00" :background "#996d00")
+(set-face-attribute 'ansi-color-magenta nil :foreground "#9343b1" :background "#9343b1")
+(set-face-attribute 'ansi-color-bright-magenta nil :foreground "#75358d" :background "#75358d")
+(set-face-attribute 'ansi-color-cyan nil :foreground "#0083b2" :background "#0083b2")
+(set-face-attribute 'ansi-color-bright-cyan nil :foreground "#006285" :background "#006285")
 
 (defun beton-clear-shell () (interactive)
        (mark-whole-buffer)

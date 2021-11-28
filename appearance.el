@@ -1,5 +1,7 @@
 (set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 150)
 (setq frame-resize-pixelwise +1)
+(setq ns-use-proxy-icon nil)
+(setq frame-title-format nil)
 (setq rainbow-delimiters-max-face-count 4)
 (setq-default cursor-type '(bar . 3))
 (menu-bar-mode -1)
