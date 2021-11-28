@@ -23,6 +23,7 @@
   (diminish 'mix-minor-mode)
   (diminish 'winum-mode))
 
+(use-package iy-go-to-char)
 
 (use-package winum
   :config
@@ -288,6 +289,12 @@
 
 (use-package clojure-mode)
 (use-package cider)
+
+(use-package lua-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
+
 
 (load-file "~/chemacs/default/eshell.el")
 (load-file "~/chemacs/default/shell.el")
