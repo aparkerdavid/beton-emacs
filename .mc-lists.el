@@ -5,7 +5,10 @@
       '(
         electric-newline-and-maybe-indent
         emmet-expand-line
+        indent-for-tab-command
         mouse-set-region
+        my/beginning-of-line
+        my/open-line
         org-self-insert-command
         simpleclip-cut
         undo-fu-only-undo
@@ -14,6 +17,8 @@
 (setq mc/cmds-to-run-once
       '(
         keyboard-quit
+        mark-whole-buffer
         shell
+        simpleclip-copy
         simpleclip-paste
         ))
