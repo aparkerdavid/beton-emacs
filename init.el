@@ -231,9 +231,30 @@
 
 (global-set-key (kbd "s-r") 'mix-test-choose-file)
 
+(use-package aas
+  :hook (elixir-mode . aas-activate-for-major-mode)
+  :config
+  (aas-set-snippets 'elixir-mode
+                    "~HH" (lambda () (interactive)
+                              (insert "~H")
+                              (dotimes (_ 3) (insert "\""))
+                              (save-excursion
+                                (newline)
+                                (indent-for-tab-command)
+                                (dotimes (_ 3) (insert "\"")))
+                              (newline)
+                              (indent-for-tab-command))))
+
 (use-package elixir-mode
   
   :config
+  (defun apheleia--format-after-save ()
+  "Run code formatter for current buffer if any configured, then save."
+  (unless apheleia--format-after-save-in-progress
+    (when apheleia-mode
+      (when-let ((command (apheleia--get-formatter-command)))
+        (apheleia-format-buffer command)))))
+
   (defun shou/fix-apheleia-project-dir (orig-fn &rest args)
     (let ((project (project-current)))
       (if (not (null project))
@@ -246,23 +267,23 @@
   :config
   (add-hook 'elixir-mode-hook 'mix-minor-mode))
 
-;; (use-package polymode
-;;   :mode ("\.ex$" . poly-elixir-web-mode)
-;;   :config
-;;   (define-hostmode poly-elixir-hostmode :mode 'elixir-mode)
-;;   (define-innermode poly-liveview-expr-elixir-innermode
-;;     :mode 'web-mode
-;;     :head-matcher (rx line-start (* space) "~H" (= 3 (char "\"'")) line-end)
-;;     :tail-matcher (rx line-start (* space) (= 3 (char "\"'")) line-end)
-;;     :head-mode 'host
-;;     :tail-mode 'host
-;;     :allow-nested nil
-;;     :keep-in-mode 'host
-;;     :fallback-mode 'host)
-;;   (define-polymode poly-elixir-web-mode
-;;     :hostmode 'poly-elixir-hostmode
-;;     :innermodes '(poly-liveview-expr-elixir-innermode))
-;;   )
+(use-package polymode
+  :mode ("\.ex$" . poly-elixir-web-mode)
+  :config
+  (define-hostmode poly-elixir-hostmode :mode 'elixir-mode)
+  (define-innermode poly-liveview-expr-elixir-innermode
+    :mode 'web-mode
+    :head-matcher (rx line-start (* space) "~H" (= 3 (char "\"'")) line-end)
+    :tail-matcher (rx line-start (* space) (= 3 (char "\"'")) line-end)
+    :head-mode 'host
+    :tail-mode 'host
+    :allow-nested nil
+    :keep-in-mode 'host
+    :fallback-mode 'host)
+  (define-polymode poly-elixir-web-mode
+    :hostmode 'poly-elixir-hostmode
+    :innermodes '(poly-liveview-expr-elixir-innermode))
+  )
 (setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
 
 (use-package clojure-mode)
