@@ -23,7 +23,24 @@
   (diminish 'mix-minor-mode)
   (diminish 'winum-mode))
 
-(use-package iy-go-to-char)
+(defun my/select-to-char
+  ()
+  (interactive)
+  (call-interactively #'set-mark-command)
+  (call-interactively #'iy-go-to-char))
+
+(defun my/select-to-char-backward
+  ()
+  (interactive)
+  (call-interactively #'set-mark-command)
+  (call-interactively #'iy-go-to-char-backward))
+
+(use-package iy-go-to-char
+  :bind
+  ("M-f" . iy-go-to-char)
+  ("M-F" . my/select-to-char)
+  ("M-b" . iy-go-to-char-backward)
+  ("M-B" . my/select-to-char-backward))
 
 (use-package winum
   :config
