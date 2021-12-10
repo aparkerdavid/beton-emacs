@@ -265,22 +265,9 @@
                               (indent-for-tab-command))))
 
 (use-package elixir-mode
-  
-  :config
-  (defun apheleia--format-after-save ()
-  "Run code formatter for current buffer if any configured, then save."
-  (unless apheleia--format-after-save-in-progress
-    (when apheleia-mode
-      (when-let ((command (apheleia--get-formatter-command)))
-        (apheleia-format-buffer command)))))
-
-  (defun shou/fix-apheleia-project-dir (orig-fn &rest args)
-    (let ((project (project-current)))
-      (if (not (null project))
-          (let ((default-directory (project-root project))) (apply orig-fn args))
-        (apply orig-fn args))))
-
-  (advice-add 'apheleia-format-buffer :around #'shou/fix-apheleia-project-dir))
+  :hook
+  (elixir-mode . (lambda () (apheleia-mode 0)))
+  (elixir-mode . (lambda () (add-hook 'after-save-hook (lambda () (interactive) (call-interactively #'apheleia-format-buffer)) 'local))))
 
 (use-package mix
   :config
@@ -301,8 +288,8 @@
     :fallback-mode 'host)
   (define-polymode poly-elixir-web-mode
     :hostmode 'poly-elixir-hostmode
-    :innermodes '(poly-liveview-expr-elixir-innermode))
-  )
+    :innermodes '(poly-liveview-expr-elixir-innermode)))
+
 (setq web-mode-engines-alist '(("elixir" . "\\.ex\\'")))
 
 (use-package clojure-mode)
