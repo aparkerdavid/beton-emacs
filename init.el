@@ -1,4 +1,5 @@
 (setq initial-buffer-choice "~/notes.org")
+(setq ring-bell-function 'ignore)
 (setq warning-minimum-level :emergency)
 (setq-default indent-tabs-mode nil)
 (setq comp-deferred-compilation-deny-list '())
@@ -13,7 +14,7 @@
 
 (add-hook 'prog-mode-hook #'electric-pair-mode)
 
-(load-file "~/chemacs/default/package-management.el")
+(load-file "~/.emacs.d/package-management.el")
 
 (use-package diminish
   :config
@@ -313,7 +314,7 @@
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
 
 
-(load-file "~/chemacs/default/eshell.el")
-(load-file "~/chemacs/default/shell.el")
-(load-file "~/chemacs/default/friendly-keys.el")
-(load-file "~/chemacs/default/appearance.el")
+(load-file "~/.emacs.d/eshell.el")
+(load-file "~/.emacs.d/shell.el")
+(load-file "~/.emacs.d/friendly-keys.el")
+(load-file "~/.emacs.d/appearance.el")

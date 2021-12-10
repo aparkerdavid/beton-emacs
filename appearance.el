@@ -21,7 +21,7 @@
 ;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)
 
-(load-file "~/chemacs/default/beton-theme.el")
+(load-file "~/.emacs.d/beton-theme.el")
 (load-theme 'beton 'y)
 
 (use-package mini-frame
@@ -33,9 +33,9 @@
        (width . 0.7)
        (left . 0.5)))))
 
-(use-package tree-sitter)
+;; (use-package tree-sitter)
 
-(use-package tree-sitter-langs)
+;; (use-package tree-sitter-langs)
 
 (use-package ligature
   :straight (ligature :type git :host github :repo "mickeynp/ligature.el"))

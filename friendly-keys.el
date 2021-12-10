@@ -22,7 +22,7 @@
 (global-set-key (kbd "s-<up>") 'beginning-of-buffer)  ;; First line
 (global-set-key (kbd "s-<down>") 'end-of-buffer)      ;; Last line
 
-(global-set-key (kbd "s-,") (lambda () (interactive) (find-file "~/chemacs/default/init.el")))
+(global-set-key (kbd "s-,") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (global-unset-key (kbd "s-p"))     ; Don't print
 
 (global-set-key (kbd "s-P") 'execute-extended-command)
