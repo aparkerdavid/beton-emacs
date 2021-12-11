@@ -306,6 +306,9 @@
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
 
+(use-package direnv
+ :config
+ (direnv-mode))
 
 (load-file "~/.emacs.d/eshell.el")
 (load-file "~/.emacs.d/shell.el")
