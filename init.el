@@ -1,11 +1,17 @@
-(setq initial-buffer-choice "~/notes.org")
+;; (setq initial-buffer-choice "~/notes.org")
+
+(eval-when-compile
+  (add-to-list 'load-path "~/.emacs.d/use-package")
+  (require 'use-package))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq use-package-always-ensure 't)
 (setq ring-bell-function 'ignore)
 (setq warning-minimum-level :emergency)
 (setq-default indent-tabs-mode nil)
 (setq comp-deferred-compilation-deny-list '())
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq auto-save-file-name-transforms
-      `((".*" "~/.saves/auto/" t)))
+     `((".*" "~/.saves/auto/" t)))
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 (setq split-width-threshold 0)
@@ -14,7 +20,10 @@
 
 (add-hook 'prog-mode-hook #'electric-pair-mode)
 
-(load-file "~/.emacs.d/package-management.el")
+;; (load-file "~/.emacs.d/package-management.el")
+
+(use-package dirvish
+  :straight (dirvish :type git :host github :repo "alexluigit/dirvish"))
 
 (use-package diminish
   :config
@@ -25,13 +34,13 @@
   (diminish 'winum-mode))
 
 (defun my/select-to-char
-  ()
+    ()
   (interactive)
   (call-interactively #'set-mark-command)
   (call-interactively #'iy-go-to-char))
 
 (defun my/select-to-char-backward
-  ()
+    ()
   (interactive)
   (call-interactively #'set-mark-command)
   (call-interactively #'iy-go-to-char-backward))
@@ -73,13 +82,23 @@
   :config
   (setq consult-project-root-function #'projectile-project-root))
 
-(use-package embark)
-
-(use-package embark-consult
-  :bind ("s-;" . 'embark-act))
-
 (use-package ctrlf
+  :bind (("s-f" . 'my/search)
+         :map ctrlf-minibuffer-mode-map
+         ("RET" . 'ctrlf-forward-default)
+         ("<escape>" . 'exit-minibuffer)
+         ("s-<escape>" . 'minibuffer-keyboard-quit))
   :config (ctrlf-mode))
+
+(use-package yascroll
+  :config
+  (global-yascroll-bar-mode 1))
+
+(defun my/search ()
+  (interactive)
+  (if ctrlf--minibuffer
+      (select-frame-set-input-focus (window-frame (active-minibuffer-window)))
+    (ctrlf-forward-default)))
 
 (use-package marginalia
   :config (marginalia-mode +1))
@@ -87,10 +106,8 @@
 (use-package selectrum
   :config (selectrum-mode +1))
 
-(use-package selectrum-prescient
-  :config
-  (selectrum-prescient-mode +1)
-  (setq prescient-filter-method '(literal regexp initialism fuzzy)))
+(use-package hotfuzz
+  :config (hotfuzz-selectrum-mode))
 
 ;; Show keybindings cheatsheet
 (use-package which-key
@@ -136,6 +153,7 @@
 
 (use-package org
   :config
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-support-shift-select 't)
   :bind
   (:map org-mode-map
@@ -147,6 +165,11 @@
 	("M-<right>" . right-word)
 	("M-<down>" . move-text-down)
 	("M-<up>" . move-text-up)))
+
+(use-package org-roam
+  :config
+  (setq org-roam-directory (file-truename "~/Documents/org-roam"))
+  (org-roam-db-autosync-mode))
 
 (use-package magit
   :config
@@ -169,10 +192,10 @@
 
 (setq auth-sources '("~/.authinfo"))
 (use-package forge
-  :after magit)
+ :after magit)
 
 (use-package orgit
-  :after magit)
+ :after magit)
 
 (use-package ediff)
 
@@ -213,6 +236,9 @@
   :init
   (add-to-list 'exec-path "~/elixir-ls")
   :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-elixir-suggest-specs nil)
+  (setq lsp-elixir-enable-test-lenses nil)
   (setq lsp-enable-file-watchers nil))
 
 (use-package consult-lsp)
@@ -255,14 +281,14 @@
   :config
   (aas-set-snippets 'elixir-mode
                     "~HH" (lambda () (interactive)
-                              (insert "~H")
-                              (dotimes (_ 3) (insert "\""))
-                              (save-excursion
-                                (newline)
-                                (indent-for-tab-command)
-                                (dotimes (_ 3) (insert "\"")))
+                            (insert "~H")
+                            (dotimes (_ 3) (insert "\""))
+                            (save-excursion
                               (newline)
-                              (indent-for-tab-command))))
+                              (indent-for-tab-command)
+                              (dotimes (_ 3) (insert "\"")))
+                            (newline)
+                            (indent-for-tab-command))))
 
 (defun my/apheleia-format-elixir () (interactive)
        (let ((project (project-current)))
@@ -301,14 +327,19 @@
 (use-package clojure-mode)
 (use-package cider)
 
-(use-package lua-mode
+(use-package lua-mode foo
   :config
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
-
 (use-package direnv
- :config
- (direnv-mode))
+  :config
+  (direnv-mode))
+
+ (use-package god-mode
+   :bind ("s-;" . god-execute-with-current-bindings)
+   :config
+   (setq god-mode-alist
+         '((nil . "C-") ("m" . "M-") ("g" . "C-M-"))))
 
 (load-file "~/.emacs.d/eshell.el")
 (load-file "~/.emacs.d/shell.el")

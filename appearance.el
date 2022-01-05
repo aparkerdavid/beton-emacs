@@ -1,4 +1,4 @@
-(set-face-attribute 'default nil :font "Fantasque Sans Mono" :height 150)
+(set-face-attribute 'default nil :font "Fira Code" :height 130)
 (setq frame-resize-pixelwise +1)
 (setq ns-use-proxy-icon nil)
 (setq frame-title-format nil)
@@ -13,10 +13,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq-default line-spacing 0.4)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'prog-mode-hook #'hl-line-mode)
 (fringe-mode 24)
-
-
 
 ;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)

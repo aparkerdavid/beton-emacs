@@ -6,6 +6,7 @@
         electric-newline-and-maybe-indent
         emmet-expand-line
         indent-for-tab-command
+        iy-go-to-char--command
         mouse-set-region
         my/beginning-of-line
         my/open-line
@@ -16,6 +17,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        comint-interrupt-subjob
         keyboard-quit
         mark-whole-buffer
         shell
