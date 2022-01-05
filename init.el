@@ -83,16 +83,13 @@
   (setq consult-project-root-function #'projectile-project-root))
 
 (use-package ctrlf
+  :config (ctrlf-mode)
   :bind (("s-f" . 'my/search)
          :map ctrlf-minibuffer-mode-map
-         ("RET" . 'ctrlf-forward-default)
+         ("<return>" . 'ctrlf-forward-default)
+         ("s-<return>" . 'ctrlf-backward-default)
          ("<escape>" . 'exit-minibuffer)
-         ("s-<escape>" . 'minibuffer-keyboard-quit))
-  :config (ctrlf-mode))
-
-(use-package yascroll
-  :config
-  (global-yascroll-bar-mode 1))
+         ("s-<escape>" . 'minibuffer-keyboard-quit)))
 
 (defun my/search ()
   (interactive)

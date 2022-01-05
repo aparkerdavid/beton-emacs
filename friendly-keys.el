@@ -1,6 +1,6 @@
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (define-key minibuffer-mode-map (kbd "<escape>") 'minibuffer-keyboard-quit)
-;; (define-key transient-map (kbd "<escape>") 'transient-quit-one)
+(define-key transient-map (kbd "<escape>") 'transient-quit-one)
 
 (global-set-key (kbd "s-w") 'delete-window)
 (global-set-key (kbd "s-W") 'delete-other-windows)

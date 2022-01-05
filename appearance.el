@@ -15,6 +15,11 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (fringe-mode 24)
 
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (highlight-indent-guides-mode 1))
+
 ;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)
 
