@@ -15,16 +15,42 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (fringe-mode 24)
 
-(use-package highlight-indent-guides
+
+(setq mode-line-format
+      '("%e"
+        mode-line-front-space
+        ;; mode-line-mule-info
+        ;; mode-line-client
+        ;; mode-line-modified
+        ;; mode-line-remote
+        ;; mode-line-frame-identification
+        mode-line-buffer-identification
+        ;; "   "
+        ;; mode-line-position
+        ;; (vc-mode vc-mode)
+        "  "
+        ;; mode-line-modes
+        mode-name
+        ;; mode-line-misc-info
+        mode-line-end-spaces
+        ))
+
+(use-package mlscroll
   :config
-  (setq highlight-indent-guides-method 'character)
-  (highlight-indent-guides-mode 1))
+  (setq mlscroll-shortfun-min-width 11) ;truncate which-func, for default mode-line-format's
+  (mlscroll-mode 1))
 
 ;; non-jittery line number display, for when you want line numbers
 (setq display-line-numbers-width-start 't)
 
 (load-file "~/.emacs.d/beton-theme.el")
 (load-theme 'beton 'y)
+
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-character #x007C)
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 (use-package mini-frame
   :config
